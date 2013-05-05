@@ -1,0 +1,3 @@
+# Implementation of the org.bankinterface.json.JsonHandler interface:
+org.bankinterface.json.Gson
+#org.bankinterface.json.FastJson

@@ -1,0 +1,148 @@
+/**
+ * JSON格式的支付机构配置模板
+ *
+ * AsyncPayParam 异步支付请求配置
+ * QueryParam 查询请求配置
+ * RefundParam 退款请求配置
+ * AsyncPayResult 异步支付结果配置
+ * QueryResult 查询结果配置
+ * RefundResult 退款结果配置
+ * AuthCodeParam 获取验证码请求配置
+ * AuthCodeResult 获取验证码结果配置
+ * SyncPayParam 同步支付请求配置
+ * SyncPayResult 同步支付结果配置
+ *
+ * default 报文默认值区域
+ * mapping 报文入参映射区域
+ * validator 验证方法定义区域
+ * converter 转换方法定义区域
+ * template 转换方法模板定义区域
+ * signerorverifier 签名或验签服务名称
+ * signedfield 被签名的参数名称
+ * joinstyle 报文组装风格
+ * signaturekey 存放签名的参数名
+ *
+ * KeyStoreInfo 证书信息配置
+ * url 证书存放路径
+ * type 证书类型
+ * password 证书密码
+ * iscertstore 是否是HTTPS客户端证书
+ * istruststore 是否是授信证书
+ * issignverifystore 是否是签名验签证书
+ */
+{
+    AsyncPayParam={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    AsyncPayResult={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    AuthCodeParam={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    AuthCodeResult={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    SyncPayParam={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    SyncPayResult={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    QueryParam={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    QueryResult={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    RefundParam={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    RefundResult={
+        default={},
+        mapping={},
+        validator={},
+        converter={},
+        template={},
+        signerorverifier='',
+        signedfield=[],
+        joinstyle=KEY_VALUE_AND,
+        signaturekey=''
+    },
+    KeyStoreInfo=[
+        {url='',type=jks,password='',iscertstore=true,istruststore=true},
+        {url='',type=jks,password='',issignverifystore=true}
+    ]
+
+}
