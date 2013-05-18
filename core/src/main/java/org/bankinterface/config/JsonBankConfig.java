@@ -173,8 +173,8 @@ public class JsonBankConfig implements BankConfig {
     private final Map<String, Map<String, String>> configValueMap = new HashMap<String, Map<String, String>>();
     private final Map<String, String[]> configValueArray = new HashMap<String, String[]>();
     private final Map<String, String> configValueString = new HashMap<String, String>();
-    private JSONObject config = new JSONObject();
-    private String configName;
+    private final String configName;
+    private JSONObject config;
 
     public JsonBankConfig(String configName) throws ConfigException {
         this.configName = configName;
@@ -275,12 +275,13 @@ public class JsonBankConfig implements BankConfig {
      * @param keyStoreInfos
      */
     private void registerKeyStoreInfo(JSONArray keyStoreInfos) {
-        if (keyStoreInfos == null)
+        if (keyStoreInfos == null) {
             return;
+        }
 
         JSONObject keyStoreInfo;
         String url, type, password;
-        for (int i = 0; i < keyStoreInfos.length(); i++) {
+        for (int i = 0, l = keyStoreInfos.length(); i < l; i++) {
             keyStoreInfo = keyStoreInfos.optJSONObject(i);
             if (keyStoreInfo != null) {
                 url = keyStoreInfo.optString(CONFIG_KEY_STORE_URL);
@@ -386,7 +387,7 @@ public class JsonBankConfig implements BankConfig {
             JSONArray values = config.optJSONObject(type).optJSONArray(key);
             int length = values.length();
             result = new String[length];
-            for (int i = 0; i < values.length(); i++) {
+            for (int i = 0; i < length; i++) {
                 result[i] = values.optString(i);
             }
             configValueArray.put(cacheKey, result);
