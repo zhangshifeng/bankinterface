@@ -10,4 +10,10 @@
     <groupId>bank-interface</groupId>
     <artifactId>camel</artifactId>
     <name>camel integration</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -20,6 +20,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <commons-codec.version>1.7</commons-codec.version>
+        <camel.version>2.11.0</camel.version>
         <json.version>20090211</json.version>
         <junit.version>4.10</junit.version>
         <slf4j.version>1.7.5</slf4j.version>
@@ -52,6 +53,11 @@
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
                 <version>${commons-codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-core</artifactId>
+                <version>${camel.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.json</groupId>
