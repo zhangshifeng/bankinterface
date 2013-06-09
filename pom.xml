@@ -13,6 +13,7 @@
         <module>core</module>
         <module>integration</module>
         <module>util</module>
+        <module>monitor</module>
     </modules>
     <properties>
         <maven.compiler.source>1.6</maven.compiler.source>
