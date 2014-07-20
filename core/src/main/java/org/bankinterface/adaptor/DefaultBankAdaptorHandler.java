@@ -246,7 +246,7 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
      */
     protected String sendHttpRequest(RequestParameters requestParameters) throws HttpClientException {
         HttpClient httpClient = new HttpClient();
-        httpClient.setUrl(requestParameters.requestURL);
+        httpClient.setUrl(requestParameters.requestUrl);
         httpClient.setStreamCharset(requestParameters.charset);
         httpClient.setParameters(requestParameters.parameters);
         // httpClient.setRawStream(requestParameters.rawStream);
@@ -432,7 +432,7 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
 
     @SuppressWarnings("serial")
     static class RequestParameters extends HashMap<String, Object>{
-        String              requestURL;
+        String              requestUrl;
         String              charset;
         String              rawStream;
         String              clientCertAlias;
@@ -441,12 +441,12 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
 
         private RequestParameters(Parameter parameter, Map<String, String> convertedMap) {
             Map<String, String> config = parameter.getConfig();
-            requestURL = config.get("requestURL");
+            requestUrl = config.get("requestUrl");
             charset = config.get("charset");
             //clientCertAlias = config.get("clientCertAlias");
             //allowUntrusted = "Y".equals(config.get("allowUntrusted"));
             parameters = convertedMap;
-            put("requestURL", requestURL);
+            put("requestUrl", requestUrl);
             put("charset", charset == null ? "UTF-8" : charset);
             put("parameters", parameters);
         }

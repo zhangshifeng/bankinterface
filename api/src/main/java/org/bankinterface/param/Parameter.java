@@ -25,7 +25,7 @@ import org.bankinterface.enums.ServiceType;
  * 
  */
 public class Parameter {
-    private String              serviceID;
+    private String              serviceId;
     private String              serviceVersion;
     private ServiceType         serviceType;
     private Map<String, String> config = new HashMap<String, String>();
@@ -36,17 +36,17 @@ public class Parameter {
      * 
      * @return
      */
-    public String getServiceID() {
-        return serviceID;
+    public String getServiceId() {
+        return serviceId;
     }
 
     /**
      * 服务标识
      * 
-     * @param serviceID
+     * @param serviceId
      */
-    public void setServiceID(String serviceID) {
-        this.serviceID = serviceID;
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
     }
 
     /**
@@ -90,13 +90,13 @@ public class Parameter {
      * 
      * <pre>
      * key:                 value
-     * merchantNO           商户号
+     * merchantNo           商户号
      * merchantName:        商户名
-     * userNO:              用户号
-     * requestURL           请求地址
+     * userNo:              用户号
+     * requestUrl           请求地址
      * charset              字符集
-     * notifictionURL       服务通知地址
-     * callbackURL          页面回调地址
+     * notifictionUrl       服务通知地址
+     * callbackUrl          页面回调地址
      * securityKey          密钥串
      * clientCertFilePath:  客户端证书证书文件路径
      * clientCertPassword:  客户端证书证书密码
@@ -107,8 +107,8 @@ public class Parameter {
      * privateCertFilePath: 私钥证书证书文件路径
      * privateCertPassword: 私钥证书证书密码
      * privateKeyAlias:     私钥证书别名(签名使用)
-     * bankNO:              银行编号
-     * payerIP:             付款方IP
+     * bankNo:              银行编号
+     * payerIp:             付款方IP
      * ...:                 ...
      * </pre>
      * 
@@ -123,13 +123,13 @@ public class Parameter {
      * 
      * <pre>
      * key:                 value
-     * merchantNO           商户号
+     * merchantNo           商户号
      * merchantName:        商户名
-     * userNO:              用户号
-     * requestURL           请求地址
+     * userNo:              用户号
+     * requestUrl           请求地址
      * charset              字符集
-     * notifictionURL       服务通知地址
-     * callbackURL          页面回调地址
+     * notifictionUrl       服务通知地址
+     * callbackUrl          页面回调地址
      * securityKey          密钥串
      * clientCertFilePath:  客户端证书证书文件路径
      * clientCertPassword:  客户端证书证书密码
@@ -140,8 +140,8 @@ public class Parameter {
      * privateCertFilePath: 私钥证书证书文件路径
      * privateCertPassword: 私钥证书证书密码
      * privateKeyAlias:     私钥证书别名(签名使用)
-     * bankNO:              银行编号
-     * payerIP:             付款方IP
+     * bankNo:              银行编号
+     * payerIp:             付款方IP
      * ...:                 ...
      * </pre>
      * 

@@ -30,7 +30,7 @@ public class Notification extends Parameter {
 
     public Notification(Parameter parameter) {
         if (parameter != null) {
-            this.setServiceID(parameter.getServiceID());
+            this.setServiceId(parameter.getServiceId());
             this.setServiceType(parameter.getServiceType());
             this.setServiceVersion(parameter.getServiceVersion());
             this.setConfig(parameter.getConfig());

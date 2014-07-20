@@ -15,7 +15,7 @@
  */
 package org.bankinterface.bank;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -38,19 +38,26 @@ public class MockTest {
 
     @Test
     public final void testPrePayString() {
+        String requestUrl = "https://api.xxxbank.com/xxx";
         AsyncPayParam param = new AsyncPayParam();
         Map<String, String> config = new HashMap<String, String>();
         config.put("merchantNo", "merchantNo");
-        config.put("requestURL", "https://api.xxxbank.com/xxx");
+        config.put("requestUrl", requestUrl);
         Date current = new Date();
-        param.setOrderNO(current.getTime() + "");
+        param.setOrderNo(current.getTime() + "");
         param.setOrderDate(current);
         param.setOrderAmount(BigDecimal.TEN);
         param.setConfig(config);
-        String json = bank.prePay(JsonHelper.toJson(param));
-        System.out.println(json);
-        PrePayResult result = JsonHelper.fromJson(json, PrePayResult.class);
+
+        String jsonParam = JsonHelper.toJson(param);
+        System.out.println(jsonParam);
+        assertTrue(jsonParam.contains(requestUrl));
+
+        String jsonResutl = bank.prePay(jsonParam);
+        System.out.println(jsonResutl);
+        PrePayResult result = JsonHelper.fromJson(jsonResutl, PrePayResult.class);
         assertTrue(result.isSuccess());
+        assertEquals(requestUrl, result.getRequestUrl());
     }
 
 }

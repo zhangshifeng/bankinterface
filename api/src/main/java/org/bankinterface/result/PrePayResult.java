@@ -22,7 +22,7 @@ import java.util.Map;
  * 
  */
 public class PrePayResult extends Result {
-    private String              requestURL;
+    private String              requestUrl;
     private String              charset;
     private Map<String, String> parameters;
 
@@ -31,17 +31,17 @@ public class PrePayResult extends Result {
      * 
      * @return
      */
-    public String getRequestURL() {
-        return requestURL;
+    public String getRequestUrl() {
+        return requestUrl;
     }
 
     /**
      * 请求地址
      * 
-     * @param requestURL
+     * @param requestUrl
      */
-    public void setRequestURL(String requestURL) {
-        this.requestURL = requestURL;
+    public void setRequestUrl(String requestUrl) {
+        this.requestUrl = requestUrl;
     }
 
     /**

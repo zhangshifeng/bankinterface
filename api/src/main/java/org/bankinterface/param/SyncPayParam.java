@@ -26,17 +26,17 @@ import org.bankinterface.enums.ServiceType;
  * 
  */
 public class SyncPayParam extends Parameter {
-    private String     orderNO;
+    private String     orderNo;
     private String     currencyType;
     private BigDecimal orderAmount;
     private String     commodityName;
     private String     authCode;
     private CardType   cardType;
-    private String     cardNO;
+    private String     cardNo;
     private String     validDate;
     private String     cvv2;
     private IDType     idType;
-    private String     idNO;
+    private String     idNo;
     private String     cardHolderName;
 
     public SyncPayParam() {
@@ -48,17 +48,17 @@ public class SyncPayParam extends Parameter {
      * 
      * @return
      */
-    public String getOrderNO() {
-        return orderNO;
+    public String getOrderNo() {
+        return orderNo;
     }
 
     /**
      * 订单号
      * 
-     * @param orderNO
+     * @param orderNo
      */
-    public void setOrderNO(String orderNO) {
-        this.orderNO = orderNO;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     /**
@@ -156,17 +156,17 @@ public class SyncPayParam extends Parameter {
      * 
      * @return
      */
-    public String getCardNO() {
-        return cardNO;
+    public String getCardNo() {
+        return cardNo;
     }
 
     /**
      * 卡号
      * 
-     * @param cardNO
+     * @param cardNo
      */
-    public void setCardNO(String cardNO) {
-        this.cardNO = cardNO;
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
     }
 
     /**
@@ -228,17 +228,17 @@ public class SyncPayParam extends Parameter {
      * 
      * @return
      */
-    public String getIdNO() {
-        return idNO;
+    public String getIdNo() {
+        return idNo;
     }
 
     /**
      * 证件号
      * 
-     * @param idNO
+     * @param idNo
      */
-    public void setIdNO(String idNO) {
-        this.idNO = idNO;
+    public void setIdNo(String idNo) {
+        this.idNo = idNo;
     }
 
     /**

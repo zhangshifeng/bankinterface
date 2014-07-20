@@ -26,7 +26,7 @@ import org.bankinterface.enums.TransactionType;
  */
 public class QueryParam extends Parameter {
     private TransactionType transactionType;
-    private String          orderNO;
+    private String          orderNo;
     private Date            orderDate;
     private Date            startDate;
     private Date            endDate;
@@ -57,17 +57,17 @@ public class QueryParam extends Parameter {
      * 
      * @return
      */
-    public String getOrderNO() {
-        return orderNO;
+    public String getOrderNo() {
+        return orderNo;
     }
 
     /**
      * 订单号
      * 
-     * @param orderNO
+     * @param orderNo
      */
-    public void setOrderNO(String orderNO) {
-        this.orderNO = orderNO;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     /**

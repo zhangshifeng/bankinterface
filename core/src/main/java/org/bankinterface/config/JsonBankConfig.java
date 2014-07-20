@@ -59,17 +59,17 @@ public class JsonBankConfig implements BankConfig {
     /**
      * 是否是HTTPS客户端证书
      */
-    public static final String CONFIG_KEY_STORE_CERT        = "iscertstore";
+    public static final String CONFIG_KEY_STORE_CERT        = "isCertStore";
 
     /**
      * 是否是授信证书
      */
-    public static final String CONFIG_KEY_STORE_TRUST       = "istruststore";
+    public static final String CONFIG_KEY_STORE_TRUST       = "isTrustStore";
 
     /**
      * 是否是签名验签证书
      */
-    public static final String CONFIG_KEY_STORE_SIGN_VERIFY = "issignverifystore";
+    public static final String CONFIG_KEY_STORE_SIGN_VERIFY = "isSignVerifyStore";
 
     /**
      * 入参默认值区域
@@ -119,12 +119,12 @@ public class JsonBankConfig implements BankConfig {
     /**
      * 签名或验签服务名称
      */
-    public static final String CONFIG_SIGNER_OR_VERIFIER    = "signerorverifier";
+    public static final String CONFIG_SIGNER_OR_VERIFIER    = "signerOrVerifier";
 
     /**
      * 称被签名的参数名称
      */
-    public static final String CONFIG_SIGNED_FIELD          = "signedfield";
+    public static final String CONFIG_SIGNED_FIELD          = "signedField";
 
     /**
      * 报文组装风格
@@ -134,12 +134,12 @@ public class JsonBankConfig implements BankConfig {
      * @see BankConfig#JOIN_STYLE_VALUE_OR
      * @see BankConfig#JOIN_STYLE_VALUE_NULL
      */
-    public static final String CONFIG_JOIN_STYLE            = "joinstyle";
+    public static final String CONFIG_JOIN_STYLE            = "joinStyle";
 
     /**
      * 存放签名的参数名
      */
-    public static final String CONFIG_SIGNATURE_KEY         = "signaturekey";
+    public static final String CONFIG_SIGNATURE_KEY         = "signatureKey";
 
     private static final Logger log = LoggerFactory.getLogger(JsonBankConfig.class);
     private static final Map<ServiceType, String> IN_TYPE = new HashMap<ServiceType, String>();

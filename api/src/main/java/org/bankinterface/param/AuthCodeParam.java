@@ -22,7 +22,7 @@ import org.bankinterface.enums.ServiceType;
  * 
  */
 public class AuthCodeParam extends Parameter {
-    private String phoneNO;
+    private String phoneNo;
 
     public AuthCodeParam() {
         setServiceType(ServiceType.AUTH_CODE);
@@ -33,17 +33,17 @@ public class AuthCodeParam extends Parameter {
      * 
      * @return
      */
-    public String getPhoneNO() {
-        return phoneNO;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
     /**
      * 手机号码
      * 
-     * @param phoneNO
+     * @param phoneNo
      */
-    public void setPhoneNO(String phoneNO) {
-        this.phoneNO = phoneNO;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
 }

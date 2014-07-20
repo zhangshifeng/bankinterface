@@ -25,14 +25,14 @@ import org.bankinterface.enums.OrderStatus;
  * 
  */
 public class SyncPayResult extends Result {
-    private String      orderNO;
-    private String      bankSerialNO;
+    private String      orderNo;
+    private String      bankSerialNo;
     private String      currencyType;
     private BigDecimal  payAmount;
     private Date        bankSuccessDate;
     private Date        paySuccessDate;
     private OrderStatus orderStatus;
-    private String      merchantNO;
+    private String      merchantNo;
     private String      callbackMessage;
 
     /**
@@ -40,17 +40,17 @@ public class SyncPayResult extends Result {
      * 
      * @return
      */
-    public String getOrderNO() {
-        return orderNO;
+    public String getOrderNo() {
+        return orderNo;
     }
 
     /**
      * 订单号
      * 
-     * @param orderNO
+     * @param orderNo
      */
-    public void setOrderNO(String orderNO) {
-        this.orderNO = orderNO;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     /**
@@ -58,17 +58,17 @@ public class SyncPayResult extends Result {
      * 
      * @return
      */
-    public String getBankSerialNO() {
-        return bankSerialNO;
+    public String getBankSerialNo() {
+        return bankSerialNo;
     }
 
     /**
      * 支付机构交易流水号
      * 
-     * @param bankSerialNO
+     * @param bankSerialNo
      */
-    public void setBankSerialNO(String bankSerialNO) {
-        this.bankSerialNO = bankSerialNO;
+    public void setBankSerialNo(String bankSerialNo) {
+        this.bankSerialNo = bankSerialNo;
     }
 
     /**
@@ -166,17 +166,17 @@ public class SyncPayResult extends Result {
      * 
      * @return
      */
-    public String getMerchantNO() {
-        return merchantNO;
+    public String getMerchantNo() {
+        return merchantNo;
     }
 
     /**
      * 商户号
      * 
-     * @param merchantNO
+     * @param merchantNo
      */
-    public void setMerchantNO(String merchantNO) {
-        this.merchantNO = merchantNO;
+    public void setMerchantNo(String merchantNo) {
+        this.merchantNo = merchantNo;
     }
 
     /**

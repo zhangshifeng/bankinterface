@@ -25,7 +25,7 @@ import org.bankinterface.enums.ServiceType;
  * 
  */
 public class AsyncPayParam extends Parameter {
-    private String     orderNO;
+    private String     orderNo;
     private Date       orderDate;
     private String     currencyType;
     private BigDecimal orderAmount;
@@ -38,16 +38,16 @@ public class AsyncPayParam extends Parameter {
     /**
      * 订单号
      */
-    public String getOrderNO() {
-        return orderNO;
+    public String getOrderNo() {
+        return orderNo;
     }
 
     /**
      * 订单号
-     * @param orderNO
+     * @param orderNo
      */
-    public void setOrderNO(String orderNO) {
-        this.orderNO = orderNO;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     /**

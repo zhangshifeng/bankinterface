@@ -11,7 +11,7 @@
             signature=''
         },
         mapping={
-            order_no=orderNO,
+            order_no=orderNo,
             order_date=orderDate,
             order_amount=orderAmount,
             currency_type=currencyType,
@@ -35,8 +35,8 @@
         template={
             order_date=yyyyMMddHHmmss
         },
-        signerorverifier='',
-        signedfield=[
+        signerOrVerifier='',
+        signedField=[
             order_no,
             order_date,
             order_amount,
@@ -44,8 +44,8 @@
             merchant_no,
             version
         ],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     AsyncPayResult={
         default={},
@@ -53,10 +53,10 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     AuthCodeParam={
         default={},
@@ -64,10 +64,10 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     AuthCodeResult={
         default={},
@@ -75,10 +75,10 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     SyncPayParam={
         default={},
@@ -86,10 +86,10 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     SyncPayResult={
         default={},
@@ -97,10 +97,10 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     QueryParam={
         default={},
@@ -108,20 +108,20 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     QueryResult={
         default={},
         mapping={},
         validator={},
         converter={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     RefundParam={
         default={},
@@ -129,10 +129,10 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     },
     RefundResult={
         default={},
@@ -140,9 +140,9 @@
         validator={},
         converter={},
         template={},
-        signerorverifier='',
-        signedfield=[],
-        joinstyle=KEY_VALUE_AND,
-        signaturekey=''
+        signerOrVerifier='',
+        signedField=[],
+        joinStyle=KEY_VALUE_AND,
+        signatureKey=''
     }
 }

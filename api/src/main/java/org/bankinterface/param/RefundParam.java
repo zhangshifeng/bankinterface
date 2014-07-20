@@ -25,8 +25,8 @@ import org.bankinterface.enums.ServiceType;
  * 
  */
 public class RefundParam extends Parameter {
-    private String     bankSerialNO;
-    private String     refundNO;
+    private String     bankSerialNo;
+    private String     refundNo;
     private Date       refundDate;
     private String     currencyType;
     private BigDecimal refundAmount;
@@ -40,17 +40,17 @@ public class RefundParam extends Parameter {
      * 
      * @return
      */
-    public String getBankSerialNO() {
-        return bankSerialNO;
+    public String getBankSerialNo() {
+        return bankSerialNo;
     }
 
     /**
      * 支付机构交易流水号
      * 
-     * @param bankSerialNO
+     * @param bankSerialNo
      */
-    public void setBankSerialNO(String bankSerialNO) {
-        this.bankSerialNO = bankSerialNO;
+    public void setBankSerialNo(String bankSerialNo) {
+        this.bankSerialNo = bankSerialNo;
     }
 
     /**
@@ -58,17 +58,17 @@ public class RefundParam extends Parameter {
      * 
      * @return
      */
-    public String getRefundNO() {
-        return refundNO;
+    public String getRefundNo() {
+        return refundNo;
     }
 
     /**
      * 退款单号
      * 
-     * @param refundNO
+     * @param refundNo
      */
-    public void setRefundNO(String refundNO) {
-        this.refundNO = refundNO;
+    public void setRefundNo(String refundNo) {
+        this.refundNo = refundNo;
     }
 
     /**
