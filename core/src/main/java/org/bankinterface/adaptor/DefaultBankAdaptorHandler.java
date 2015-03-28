@@ -23,14 +23,6 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.bankinterface.bank.BaseBank;
 import org.bankinterface.builder.ResultBuilder;
 import org.bankinterface.config.BankConfig;
-import org.bankinterface.converter.AmountToFenConverter;
-import org.bankinterface.converter.AmountToYuanConverter;
-import org.bankinterface.converter.Converter;
-import org.bankinterface.converter.DateToStringConverter;
-import org.bankinterface.converter.FenToAmountConverter;
-import org.bankinterface.converter.ReplaceConverter;
-import org.bankinterface.converter.StringToDateConverter;
-import org.bankinterface.converter.YuanToAmountConverter;
 import org.bankinterface.exception.ConfigException;
 import org.bankinterface.exception.ConversionException;
 import org.bankinterface.exception.HttpClientException;
@@ -41,9 +33,6 @@ import org.bankinterface.param.Parameter;
 import org.bankinterface.signer.Signer;
 import org.bankinterface.util.HttpClient;
 import org.bankinterface.util.Utils;
-import org.bankinterface.validator.EqualsValidator;
-import org.bankinterface.validator.NotNullValidator;
-import org.bankinterface.validator.Validator;
 import org.bankinterface.verifier.Verifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,17 +42,9 @@ import org.slf4j.LoggerFactory;
  * 
  */
 public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
-    private static final Logger          logger       = LoggerFactory.getLogger(DefaultBankAdaptorHandler.class);
-    // 转换规则
-    private final Map<String, Converter> converterMap = new HashMap<String, Converter>();
-    // 验证规则
-    private final Map<String, Validator> validatorMap = new HashMap<String, Validator>();
-    // 签名服务
-    private final Map<String, Signer>    signerMap    = new HashMap<String, Signer>();
-    // 验签服务
-    private final Map<String, Verifier>  verifierMap  = new HashMap<String, Verifier>();
-    private final BaseBank               bank;
-    private final String                 bankName;
+    private static final Logger logger = LoggerFactory.getLogger(DefaultBankAdaptorHandler.class);
+    private final BaseBank bank;
+    private final String bankName;
 
     public DefaultBankAdaptorHandler(BaseBank bank) {
         if (bank == null) {
@@ -72,17 +53,6 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
         }
         this.bank = bank;
         bankName = bank.getClass().getName();
-        // register default converters
-        registerValidator(new NotNullValidator());
-        registerValidator(new EqualsValidator());
-        // register default validators
-        registerConverter(new AmountToFenConverter());
-        registerConverter(new AmountToYuanConverter());
-        registerConverter(new YuanToAmountConverter());
-        registerConverter(new FenToAmountConverter());
-        registerConverter(new DateToStringConverter());
-        registerConverter(new ReplaceConverter());
-        registerConverter(new StringToDateConverter());
     }
 
     /**
@@ -120,7 +90,7 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
                 // 获得入参值
                 vaule = getParameterValue(parameter, mapping, defaultValue);
                 // 用指定的验证方法验证
-                getValidator(validator).validate(mapping, vaule, defaultValue);
+                bank.getValidator(validator).validate(mapping, vaule, defaultValue);
             }
         }
 
@@ -142,14 +112,14 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
                 // 获得转换模板
                 template = templateMap.get(key);
                 // 转换值替换默认值
-                convertedMap.put(key, (String) getConverter(converter).convert(mapping, vaule, template));
+                convertedMap.put(key, (String) bank.getConverter(converter).convert(mapping, vaule, template));
             }
         }
 
         // 依据规则进行签名
         String signatureKey = config.getSignatureKey(type);
         if (!Utils.isEmpty(signatureKey)) {
-            Signer signer = getSigner(config.getSignerOrVerifier(type));
+            Signer signer = bank.getSigner(config.getSignerOrVerifier(type));
             convertedMap.put(signatureKey,
                     signer.sign(convertedMap, config.getSignedField(type), config.getJoinStyle(type), parameter));
         }
@@ -171,7 +141,7 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
         // 获取支付机构请求报文处理配置
         BankConfig config = bank.getBankConfig(notification.getServiceVersion());
         String type = config.getConfigType(notification.getServiceType(), true);
-        Verifier verifier = getVerifier(config.getSignerOrVerifier(type));
+        Verifier verifier = bank.getVerifier(config.getSignerOrVerifier(type));
         // 验签并解密
         return verifier.verify(config.getSignedField(type), config.getJoinStyle(type), config.getSignatureKey(type),
                 notification);
@@ -211,7 +181,7 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
                 // 获得原始结果值
                 value = verifiedMap.get(mapping);
                 // 用指定的验证方法验证
-                getValidator(validator).validate(mapping, validator, value, defaultValue);
+                bank.getValidator(validator).validate(mapping, validator, value, defaultValue);
             }
         }
 
@@ -230,7 +200,7 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
                 // 获得原始结果值
                 value = verifiedMap.get(mapping);
                 // 用指定的转换方式转换
-                convertedMap.put(key, getConverter(converter).convert(mapping, value, template));
+                convertedMap.put(key, bank.getConverter(converter).convert(mapping, value, template));
             }
         }
 
@@ -283,61 +253,6 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
         } catch (Exception e) {
         }
         return result == null ? defaultValue : result;
-    }
-
-    /**
-     * 获取验证规则
-     * 
-     * @param validatorName
-     */
-    protected Validator getValidator(String validatorName) throws ValidationException {
-        Validator validator = validatorMap.get(validatorName);
-        if (validator == null) {
-            throw ValidationException.UNSUPPORTED;
-        }
-        return validator;
-    }
-
-    /**
-     * 获取转换规则
-     * 
-     * @param converterName
-     * @throws ConversionException
-     */
-    protected Converter getConverter(String converterName) throws ConversionException {
-        Converter converter = converterMap.get(converterName);
-        if (converter == null) {
-            throw ConversionException.UNSUPPORTED;
-        }
-        return converter;
-    }
-
-    /**
-     * 获取签名服务
-     * 
-     * @param signerName
-     * @throws SignVerifyException
-     */
-    protected Signer getSigner(String signerName) throws SignVerifyException {
-        Signer signer = signerMap.get(signerName);
-        if (signer == null) {
-            throw SignVerifyException.UNSUPPORTED;
-        }
-        return signer;
-    }
-
-    /**
-     * 获取验签服务
-     * 
-     * @param verifierName
-     * @throws SignVerifyException
-     */
-    protected Verifier getVerifier(String verifierName) throws SignVerifyException {
-        Verifier verifier = verifierMap.get(verifierName);
-        if (verifier == null) {
-            throw SignVerifyException.UNSUPPORTED;
-        }
-        return verifier;
     }
 
     public void handlePrePay(ResultBuilder resultBuilder, Parameter parameter) {
@@ -400,34 +315,6 @@ public class DefaultBankAdaptorHandler implements BankAdaptorHandler {
 
     public void handleBatchAllInOne(ResultBuilder resultBuilder, Parameter parameter) {
         throw new UnsupportedOperationException();
-    }
-
-    public BankAdaptorHandler registerConverter(Converter convert) {
-        if (convert != null) {
-            converterMap.put(convert.getName(), convert);
-        }
-        return this;
-    }
-
-    public BankAdaptorHandler registerValidator(Validator validate) {
-        if (validate != null) {
-            validatorMap.put(validate.getName(), validate);
-        }
-        return this;
-    }
-
-    public BankAdaptorHandler registerSigner(Signer signer) {
-        if (signer != null) {
-            signerMap.put(signer.getName(), signer);
-        }
-        return this;
-    }
-
-    public BankAdaptorHandler registerVerifier(Verifier verifier) {
-        if (verifier != null) {
-            verifierMap.put(verifier.getName(), verifier);
-        }
-        return this;
     }
 
     @SuppressWarnings("serial")

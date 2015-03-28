@@ -16,12 +16,8 @@
 package org.bankinterface.adaptor;
 
 import org.bankinterface.builder.ResultBuilder;
-import org.bankinterface.converter.Converter;
 import org.bankinterface.param.Notification;
 import org.bankinterface.param.Parameter;
-import org.bankinterface.signer.Signer;
-import org.bankinterface.validator.Validator;
-import org.bankinterface.verifier.Verifier;
 
 /**
  * 适配处理器
@@ -62,31 +58,4 @@ public interface BankAdaptorHandler {
      */
     public void handleBatchAllInOne(ResultBuilder resultBuilder, Parameter parameter);
 
-    /**
-     * 注册转换规则
-     * 
-     * @param converter
-     */
-    public BankAdaptorHandler registerConverter(Converter converter);
-
-    /**
-     * 注册验证规则
-     * 
-     * @param Validator
-     */
-    public BankAdaptorHandler registerValidator(Validator validator);
-
-    /**
-     * 注册签名服务提供者
-     * 
-     * @param signer
-     */
-    public BankAdaptorHandler registerSigner(Signer signer);
-
-    /**
-     * 注册验签服务提供者
-     * 
-     * @param verifier
-     */
-    public BankAdaptorHandler registerVerifier(Verifier verifier);
 }

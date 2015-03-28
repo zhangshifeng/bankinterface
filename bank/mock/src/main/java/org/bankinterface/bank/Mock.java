@@ -29,8 +29,8 @@ public class Mock extends BaseBank {
     @Override
     public void init() throws ConfigException {
         super.init();
-        getHandler().registerConverter(new PaymentOrderStatusConverter())
-                .registerConverter(new QueryOrderStatusConverter())
-                .registerConverter(new RefundOrderStatusConverter());
+        registerConverter(new PaymentOrderStatusConverter());
+        registerConverter(new QueryOrderStatusConverter());
+        registerConverter(new RefundOrderStatusConverter());
     }
 }
